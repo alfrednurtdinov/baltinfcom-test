@@ -1,2 +1,2 @@
 [stage]
-ubuntu1 ansible_host=45.67.228.220 ansible_user=baltinfcom ansible_pass=test239
+ubuntu1 ansible_host=45.67.228.220 ansible_connection=ssh ansible_user=baltinfcom ansible_ssh_pass=test239
