@@ -6,12 +6,18 @@
     ping:
 
   - name: install 
-    # ping: 
-    dnf:
+    become: yes 
+    apt:
       name:
       - slapd
       - ldap-utils
       state: present
+  
+  - name: start service
+    service:
+      name: slapd
+      state: started
+
 
 
 # - name : openldap-installer
