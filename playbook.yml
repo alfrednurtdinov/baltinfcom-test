@@ -1,0 +1,26 @@
+- name: testing
+  hosts: all
+  # become: yes #for sudo
+  tasks:
+  - name: testing 
+    ping:
+
+  - name: install 
+    # ping: 
+    dnf:
+      name:
+      - slapd
+      - ldap-utils
+      state: present
+
+
+# - name : openldap-installer
+#   hosts: all
+#   # become: yes #for sudo
+#   tasks:
+#   - name: installopenldap
+#     become: yes
+#     dnf: 
+#       - slapd 
+#       - ldap-utils
+    
