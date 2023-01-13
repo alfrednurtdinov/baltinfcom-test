@@ -1,32 +1,38 @@
+---
 - name: testing
   hosts: all
-  # become: yes #for sudo
+  tasks: 
+  become: yes #for sudo
   tasks:
-  - name: testing 
-    ping:
+  # - name: testing 
+  #   ping:
 
-  - name: install 
-    become: yes 
-    apt:
-      name:
-      - slapd
-      - ldap-utils
-      state: present
+
+
+  # - name: install 
+  #   become: yes 
+  #   apt:
+  #     name:
+  #     - slapd
+  #     - ldap-utils
+  #     state: present
+
+
+
+  # - name: start service
+  #   service:
+  #     name: slapd
+  #     state: started
+
+  - name: config 
+    #ansible.builtin.command: ls
+    ansible.builtin.shell: |
+      ls
+      echo 'dn: olcDatabase={0}config,cn=config
+      changetype: modify
+      add: olcRootPW
+      olcRootPW: {SSHA}PASSWORD_CREATED' > /home/baltinfcom/ldaprootpasswd.ldif
   
-  - name: start service
-    service:
-      name: slapd
-      state: started
+  
 
 
-
-# - name : openldap-installer
-#   hosts: all
-#   # become: yes #for sudo
-#   tasks:
-#   - name: installopenldap
-#     become: yes
-#     dnf: 
-#       - slapd 
-#       - ldap-utils
-    

@@ -1,0 +1,14 @@
+---
+- name: first
+  hosts: all
+    become: yes
+    become_user: root
+    roles:
+      - role: debops.slapd
+        slapd_domain: 'development.local'
+        slapd_pki: false
+        slapd_config_admin_password: 'passwords/ldap-admin.password'
+        slapd_basedn_admin_password: 'passwords/ldap-admin.password'
+        slapd_ldapscripts: true
+        slapd_ldap_security_default: []
+        slapd_anonymous_bind: true
